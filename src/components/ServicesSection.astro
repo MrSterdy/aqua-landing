@@ -1,0 +1,89 @@
+---
+import { Button } from '@/components/ui/button'
+import {
+  LuBuilding2,
+  LuFileText,
+  LuFish,
+  LuHammer,
+  LuListChecks,
+  LuScale,
+} from 'react-icons/lu'
+
+const services = [
+  {
+    title: 'Договор водопользования',
+    description: 'Оформление договоров для аренды акваторий, размещения плавсредств, понтонов и забора воды.',
+    icon: LuFileText,
+    rotation: 15,
+  },
+  {
+    title: 'Решение и разрешение',
+    description: 'Получение разрешений на строительство ГТС, берегоукрепление, дноуглубление и водозабор.',
+    icon: LuHammer,
+    rotation: -15,
+  },
+  {
+    title: 'Юридические услуги',
+    description: 'Представление интересов в суде, обжалование отказов, сопровождение проверок и передача прав.',
+    icon: LuScale,
+    rotation: 15,
+  },
+  {
+    title: 'Рыбоводство',
+    description: 'Формирование рыбоводных участков, расчет ущерба водных ресурсов и сопровождение аквакультуры.',
+    icon: LuFish,
+    rotation: -15,
+  },
+  {
+    title: 'Мелиорация',
+    description: 'Оформление разрешений на забор и сброс воды для мелиоративных работ.',
+    icon: LuBuilding2,
+    rotation: 15,
+  },
+  {
+    title: 'Дополнительные услуги',
+    description: 'Внесение в реестр туроператоров, разработка ППР и сопровождение документации.',
+    icon: LuListChecks,
+    rotation: -15,
+  },
+]
+---
+
+<section class="px-6 bg-radial-[at_50%_0%] to-75% from-primary/20 border-border border-b-1 border-dashed">
+  <div class="max-w-[1400px] mx-auto flex flex-col gap-8 sm:gap-10 py-12">
+    <div class="flex flex-col gap-4">
+      <div class="flex items-center justify-center w-full gap-4">
+        <div class="flex items-center">
+          <div class="h-[1px] bg-foreground w-24 sm:w-32"></div>
+          <div class="w-[1px] bg-foreground h-4 sm:h-5"></div>
+        </div>
+        <h2 class="text-center text-2xl sm:text-4xl uppercase tracking-widest">Наши услуги</h2>
+        <div class="flex items-center">
+          <div class="w-[1px] bg-foreground h-4 sm:h-5"></div>
+          <div class="h-[1px] bg-foreground w-24 sm:w-32"></div>
+        </div>
+      </div>
+      <p class="text-muted-foreground text-base sm:text-lg text-center text-balance">
+        Полный цикл оформления документов на водные объекты — от консультации до регистрации.
+      </p>
+    </div>
+
+    <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-12">
+      {services.map((service, index) => {
+        const Icon = service.icon
+        const isOdd = index % 2 === 0
+        return (
+          <li class={`py-6 px-8 flex flex-col gap-4 rounded-lg !border-t-0 !border-r-0 border-[1px] sm:border-2 ${isOdd ? 'border-sky-600 before:absolute before:size-full before:-bottom-4 before:-left-4 before:bg-sky-600/10 before:rounded-lg' : 'border-primary'} relative`}>
+            <div class={`absolute rounded-tl-lg border-t-[1px] sm:border-t-2 ${isOdd ? 'border-sky-600' : 'border-primary'} top-0 left-0 h-full w-[91%] sm:w-[85%] -z-10`}></div>
+            <div class={`absolute rounded-br-lg border-r-[1px] sm:border-r-2 ${isOdd ? 'border-sky-600' : 'border-primary'} bottom-0 right-0 h-[65%] sm:h-[55%] w-[85%] -z-10`}></div>
+            <h3 class="text-lg sm:text-xl font-bold">{service.title}</h3>
+            <p class="text-sm sm:text-base text-balance text-muted-foreground">{service.description}</p>
+            <Icon className={`size-10 sm:size-14 ${isOdd ? 'text-sky-600' : 'text-primary'} absolute -top-4 -right-4`} style={{ transform: `rotate(${service.rotation}deg)` }} />
+          </li>
+        )
+      })}
+    </ul>
+
+    <Button variant="outline" className="text-xl h-13 px-8 py-6 self-center">Узнать подробнее</Button>
+  </div>
+</section>
