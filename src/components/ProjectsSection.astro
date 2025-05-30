@@ -1,5 +1,7 @@
 ---
-import { LuFileText, LuHammer, LuUser, LuX } from 'react-icons/lu'
+import Feedbacks from '@/components/Feedbacks'
+import Projects from '@/components/Projects'
+import { LuFileText, LuHammer, LuX } from 'react-icons/lu'
 
 const projects = [
   {
@@ -21,27 +23,6 @@ const projects = [
     document: 'Документ',
   },
 ]
-
-const reviews = [
-  {
-    image: '/images/img.png',
-    title: 'Посёлок солнечный',
-    name: 'Петров Егор Александрович',
-    document: 'Документ',
-  },
-  {
-    image: '/images/img.png',
-    title: 'Посёлок солнечный',
-    name: 'Петров Егор Александрович',
-    document: 'Документ',
-  },
-  {
-    image: '/images/img.png',
-    title: 'Посёлок солнечный',
-    name: 'Петров Егор Александрович',
-    document: 'Документ',
-  },
-]
 ---
 
 <section class="px-6 border-border border-b-1 border-dashed grid-bg">
@@ -57,24 +38,7 @@ const reviews = [
       <span class="relative top-2 text-base sm:text-lg text-muted-foreground text-balance text-center lg:text-left">Лишь малая часть выполненных нами проектов!</span>
     </div>
 
-    <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 xl:gap-12">
-      {projects.map(project => (
-        <li class="rounded-lg border-[1px] sm:border-2 border-primary/50 flex flex-col gap-3 bg-primary/10 p-6 pb-5">
-          <img src={project.image} class="rounded-md" />
-          <div class="flex flex-col gap-2">
-            <h4 class="text-2xl">{project.title}</h4>
-            <span class="inline-flex text-sm items-center gap-2 text-muted-foreground">
-              <LuHammer className="size-5" />
-              <span>{project.type}</span>
-            </span>
-            <span class="inline-flex text-sm items-center gap-2 text-muted-foreground">
-              <LuFileText className="size-5" />
-              <span>{project.document}</span>
-            </span>
-          </div>
-        </li>
-      ))}
-    </ul>
+    <Projects client:load />
 
     <div class="flex flex-col-reverse lg:flex-row gap-4 justify-between border-primary/50 flex-wrap items-center">
       <span class="relative text-base sm:text-lg text-muted-foreground text-balance text-center lg:text-left">Ваш отзыв - лучшая благодарность!</span>
@@ -87,23 +51,6 @@ const reviews = [
       </div>
     </div>
 
-    <ul class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 xl:gap-12">
-      {reviews.map(review => (
-        <li class="rounded-lg border-[1px] sm:border-2 border-primary/50 flex flex-col gap-3 bg-primary/10 p-6 pb-5">
-          <img src={review.image} class="rounded-md" />
-          <div class="flex flex-col gap-2">
-            <h4 class="text-2xl">{review.title}</h4>
-            <span class="inline-flex text-sm items-center gap-2 text-muted-foreground">
-              <LuUser className="size-5" />
-              <span>{review.name}</span>
-            </span>
-            <span class="inline-flex text-sm items-center gap-2 text-muted-foreground">
-              <LuFileText className="size-5" />
-              <span>{review.document}</span>
-            </span>
-          </div>
-        </li>
-      ))}
-    </ul>
+    <Feedbacks client:load />
   </div>
 </section>

@@ -1,4 +1,6 @@
 ---
+import HeroBackgroundImage from '@/assets/images/stroitelstvo-na-vode.webp'
+import CalculatePrice from '@/components/CalculatePrice'
 import FAQSection from '@/components/FAQSection.astro'
 import Footer from '@/components/Footer.astro'
 import Header from '@/components/Header.astro'
@@ -6,6 +8,7 @@ import HeroSection from '@/components/HeroSection.astro'
 import HowWeWorkSection from '@/components/HowWeWorkSection.astro'
 import ProjectsSection from '@/components/ProjectsSection.astro'
 import ServicesSection from '@/components/ServicesSection.astro'
+import { Image } from 'astro:assets'
 import '../styles/global.css'
 ---
 
@@ -48,11 +51,12 @@ if (typeof localStorage !== 'undefined') {
       <div class="relative text-white flex flex-col gap-24 h-screen">
         <Header />
         <HeroSection />
-        <img src="/images/stroitelstvo-na-vode.webp" class="-z-10 inset-0 absolute w-full h-full object-cover brightness-50" />
+        <Image src={HeroBackgroundImage} alt="Строительство на воде" class="-z-10 inset-0 absolute w-full h-full object-cover brightness-50" />
       </div>
       <ServicesSection />
-      <HowWeWorkSection />
       <ProjectsSection />
+      <HowWeWorkSection />
+      <CalculatePrice client:load />
       <FAQSection />
       <Footer />
     </main>
