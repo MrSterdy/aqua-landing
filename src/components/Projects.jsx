@@ -11,7 +11,7 @@ import 'lightgallery/css/lg-thumbnail.css'
 
 const projects = [
   {
-    image: '/src/assets/images/projects/case1/case_1.jpeg',
+    image: '/images/projects/case1/case_1.jpeg',
     place: 'Калининградская обл., г. Калининград, р. Преголя',
     document: 'Договор водопользования',
     type: 'Бетонный понтон',
@@ -25,7 +25,7 @@ const projects = [
     ],
   },
   {
-    image: '/src/assets/images/projects/case2/case_1.jpeg',
+    image: '/images/projects/case2/case_1.jpeg',
     place: 'Тверская обл., Конаковский р-н, р. Волга',
     document: 'Решение о предоставление водного объекта в пользование для строительства ГТС',
     type: 'П-образный свайный пирс',
@@ -42,7 +42,7 @@ const projects = [
     ],
   },
   {
-    image: '/src/assets/images/projects/case3/case_1.jpeg',
+    image: '/images/projects/case3/case_1.jpeg',
     place: 'Респ. Мордовия, р. Алтырь',
     document: 'Решение о предоставление водного объекта в пользование для строительства ГТС',
     type: 'Пассажирский причал',
@@ -55,7 +55,7 @@ const projects = [
     ],
   },
   {
-    image: '/src/assets/images/projects/case4/case_1.jpeg',
+    image: '/images/projects/case4/case_1.jpeg',
     place: 'Респ. Карелия, Прионежский р-н, р. Пухта',
     document: 'Решение о предоставление водного объекта в пользование для строительства ГТС',
     type: 'Свайный пирс',
@@ -66,7 +66,7 @@ const projects = [
     ],
   },
   {
-    image: '/src/assets/images/projects/case5/case_1.jpeg',
+    image: '/images/projects/case5/case_1.jpeg',
     place: 'Респ. Северная Осетия-Алания, Кировский р-н, р. Камбилеевка',
     document: 'Решение о предоставление водного объекта в пользование для строительства ГТС',
     type: 'Шлюз',
@@ -127,7 +127,7 @@ export default function Projects() {
                   <img
                     src={project.image}
                     className="rounded-md w-full h-[200px] object-cover"
-                    alt={`Project ${index + 1}`}
+                    alt={`Проект ${index + 1}`}
                   />
                 </button>
                 <div className="flex flex-col gap-2">
