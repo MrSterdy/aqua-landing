@@ -1,27 +1,37 @@
 ---
-import { FaWhatsapp } from 'react-icons/fa'
-import { LiaTelegram } from 'react-icons/lia';
+import { FaVk, FaWhatsapp } from 'react-icons/fa'
+import { LiaTelegram } from 'react-icons/lia'
+import { LuMapPin } from 'react-icons/lu'
+import Logo from './Logo.astro';
 ---
 
 <header class="w-full px-6">
   <div class="w-full flex flex-col gap-4 max-w-[1400px] mx-auto">
     <div class="flex gap-4 items-center justify-between flex-wrap pt-4 text-xs sm:text-sm text-white/50">
       <div class="flex items-center gap-4 sm:gap-6">
-        <a href="https://t.me/+79999999999" class="inline-flex items-center gap-2 transition-colors hover:text-primary">
-          <LiaTelegram className="size-4 sm:size-5" />
-          +7 (999) 999 99-99
-        </a>
+        <span class="inline-flex items-center gap-2">
+          <LuMapPin className="size-4 sm:size-5" />
+          г. Казань. ул. Петербургская, д. 52
+        </span>
       </div>
-      <div class="flex items-center gap-4 sm:gap-6">
-        <a href="https://wa.me/79999999999" class="inline-flex items-center gap-2 transition-colors hover:text-primary">
+      <div class="flex items-center flex-wrap gap-4 sm:gap-6">
+        <a href="https://vk.com/vodopolzovania" target="_blank" class="inline-flex items-center gap-2 transition-colors hover:text-primary">
+          <FaVk className="size-4 sm:size-5" />
+          @vodopolzovania
+        </a>
+        <a href="https://wa.me/79934162778" target="_blank" class="inline-flex items-center gap-2 transition-colors hover:text-primary">
           <FaWhatsapp className="size-4 sm:size-5" />
-          +7 (999) 999 99-99
+          +7 (993) 416 27-78
+        </a>
+        <a href="https://t.me/dogovorvodopolzovania" target="_blank" class="inline-flex items-center gap-2 transition-colors hover:text-primary">
+          <LiaTelegram className="size-4 sm:size-5" />
+          @dogovorvodopolzovania
         </a>
       </div>
     </div>
     <div class="flex gap-4 justify-between items-center flex-wrap">
-      <h1 class="uppercase tracking-widest text-xl sm:text-2xl">Placeholder</h1>
-      <div class="flex text-sm sm:text-base items-center gap-4 sm:gap-6">
+      <Logo class="size-5" />
+      <div class="flex text-sm sm:text-base items-center gap-4 sm:gap-6 flex-wrap">
         <a href="#" class="transition-colors hover:text-primary">
           О нас
         </a>

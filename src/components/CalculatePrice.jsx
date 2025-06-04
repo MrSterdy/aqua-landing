@@ -1,7 +1,7 @@
 import { Button } from '@/components/ui/button'
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
-import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import { useState } from 'react'
 import { LuCalculator, LuMoveDown, LuMoveLeft, LuMoveRight, LuMoveUp, LuNotebookText, LuPencil } from 'react-icons/lu'
 
@@ -46,8 +46,8 @@ export default function CalculatePrice() {
                 />
               </Label>
               <Label className="flex flex-col gap-2 items-start">
-                <span className="text-base">Срок (дн)</span>
-                <Input placeholder="30" className="w-fit xs:w-auto sm:min-w-96 lg:min-w-86 h-10" type="number" />
+                <span className="text-base">Срок (лет)</span>
+                <Input placeholder="10" className="w-fit xs:w-auto sm:min-w-96 lg:min-w-86 h-10" type="number" max="20" />
               </Label>
               <Dialog>
                 <DialogTrigger asChild>
