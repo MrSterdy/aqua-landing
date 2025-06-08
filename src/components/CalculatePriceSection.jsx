@@ -6,8 +6,38 @@ import { useState } from 'react'
 import { LuCalculator, LuMoveDown, LuMoveLeft, LuMoveRight, LuMoveUp, LuNotebookText, LuPencil } from 'react-icons/lu'
 
 export default function CalculatePrice() {
-  const [rectangleLength, setRectangleLength] = useState(0)
-  const [rectangleWidth, setRectangleWidth] = useState(0)
+  const [rectangleLength, setRectangleLength] = useState(1)
+  const [rectangleWidth, setRectangleWidth] = useState(1)
+  const [term, setTerm] = useState(1)
+
+  const handleKeyDown = (e) => {
+    const invalidKeys = ['-', '+', 'e', 'E', '.', ',']
+    if (invalidKeys.includes(e.key)) {
+      e.preventDefault()
+    }
+  }
+
+  const handleDimensionChange = (value, setter) => {
+    if (/\D/.test(value))
+      return
+
+    const numValue = Number.parseInt(value, 10)
+
+    if (value === '' || (numValue >= 1 && numValue <= 9999999)) {
+      setter(value)
+    }
+  }
+
+  const handleTermChange = (value) => {
+    if (/\D/.test(value))
+      return
+
+    const numValue = Number.parseInt(value, 10)
+
+    if (value === '' || (numValue >= 1 && numValue <= 20)) {
+      setTerm(value)
+    }
+  }
 
   return (
     <section className="px-6 border-border border-b-1 border-dashed overflow-hidden">
@@ -28,26 +58,41 @@ export default function CalculatePrice() {
               <Label className="flex flex-col gap-2 items-start">
                 <span className="text-base">Длина (м)</span>
                 <Input
+                  min={1}
+                  max={9999999}
                   placeholder="100"
                   className="w-fit xs:w-auto sm:min-w-96 lg:min-w-86 h-10"
                   type="number"
                   value={rectangleLength}
-                  onInput={e => setRectangleLength(e.target.value)}
+                  onInput={e => handleDimensionChange(e.target.value, setRectangleLength)}
+                  onKeyDown={handleKeyDown}
                 />
               </Label>
               <Label className="flex flex-col gap-2 items-start">
                 <span className="text-base">Ширина (м)</span>
                 <Input
+                  min={1}
+                  max={9999999}
                   placeholder="100"
                   className="w-fit xs:w-auto sm:min-w-96 lg:min-w-86 h-10"
                   type="number"
                   value={rectangleWidth}
-                  onInput={e => setRectangleWidth(e.target.value)}
+                  onInput={e => handleDimensionChange(e.target.value, setRectangleWidth)}
+                  onKeyDown={handleKeyDown}
                 />
               </Label>
               <Label className="flex flex-col gap-2 items-start">
                 <span className="text-base">Срок (лет)</span>
-                <Input placeholder="10" className="w-fit xs:w-auto sm:min-w-96 lg:min-w-86 h-10" type="number" max="20" />
+                <Input
+                  min={1}
+                  max={20}
+                  placeholder="10"
+                  className="w-fit xs:w-auto sm:min-w-96 lg:min-w-86 h-10"
+                  type="number"
+                  value={term}
+                  onInput={e => handleTermChange(e.target.value)}
+                  onKeyDown={handleKeyDown}
+                />
               </Label>
               <Dialog>
                 <DialogTrigger asChild>
@@ -86,7 +131,7 @@ export default function CalculatePrice() {
                     <LuMoveDown className="size-6 relative -top-[2px] shrink-0 text-primary/50" />
                   </div>
                   <span className="[writing-mode:sideways-lr] text-center text-muted-foreground">
-                    {rectangleLength}
+                    {rectangleLength || 0}
                     {' '}
                     м.
                   </span>
@@ -98,7 +143,7 @@ export default function CalculatePrice() {
                     <LuMoveRight className="size-6 -left-[2px] relative text-primary/50" />
                   </div>
                   <span className="text-center text-muted-foreground">
-                    {rectangleWidth}
+                    {rectangleWidth || 0}
                     {' '}
                     м.
                   </span>

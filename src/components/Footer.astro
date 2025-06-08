@@ -1,4 +1,5 @@
 ---
+import { contacts } from '@/lib/contacts'
 import { FaVk, FaWhatsapp } from 'react-icons/fa'
 import { LiaTelegram } from 'react-icons/lia'
 import { LuMapPin } from 'react-icons/lu'
@@ -10,39 +11,36 @@ import Logo from './Logo.astro';
     <div class="flex gap-4 justify-between items-center flex-wrap">
       <Logo />
       <div class="flex items-center gap-6 text-sm sm:text-base flex-wrap">
-        <a href="#" class="transition-colors hover:text-primary">
+        <a href="#about-us" class="transition-colors hover:text-primary">
           О нас
         </a>
-        <a href="#" class="transition-colors hover:text-primary">
+        <a href="#services" class="transition-colors hover:text-primary">
           Услуги
         </a>
-        <a href="#" class="transition-colors hover:text-primary">
+        <a href="#projects" class="transition-colors hover:text-primary">
           Кейсы
-        </a>
-        <a href="#" class="transition-colors hover:text-primary">
-          Контакты
         </a>
       </div>
     </div>
     <div class="flex gap-4 items-center justify-between flex-wrap text-xs sm:text-sm text-muted-foreground">
       <div class="flex items-center gap-4 sm:gap-6">
-        <span class="inline-flex items-center gap-2">
+        <a href={contacts.address.mapUrl} class="inline-flex items-center gap-2 transition-colors hover:text-primary" target="_blank">
           <LuMapPin className="size-4 sm:size-5" />
-          г. Казань. ул. Петербургская, д. 52
-        </span>
+          {contacts.address.full}
+        </a>
       </div>
       <div class="flex items-center gap-4 flex-wrap sm:gap-6">
-        <a href="https://vk.com/vodopolzovania" target="_blank" class="inline-flex items-center gap-2 transition-colors hover:text-primary">
+        <a href={contacts.social.vk.url} target="_blank" class="inline-flex items-center gap-2 transition-colors hover:text-primary">
           <FaVk className="size-4 sm:size-5" />
-          @vodopolzovania
+          {contacts.social.vk.handle}
         </a>
-        <a href="https://wa.me/79934162778" target="_blank" class="inline-flex items-center gap-2 transition-colors hover:text-primary">
+        <a href={contacts.phone.whatsappUrl} target="_blank" class="inline-flex items-center gap-2 transition-colors hover:text-primary">
           <FaWhatsapp className="size-4 sm:size-5" />
-          +7 (993) 416 27-78
+          {contacts.phone.number}
         </a>
-        <a href="https://t.me/dogovorvodopolzovania" target="_blank" class="inline-flex items-center gap-2 transition-colors hover:text-primary">
+        <a href={contacts.social.telegram.url} target="_blank" class="inline-flex items-center gap-2 transition-colors hover:text-primary">
           <LiaTelegram className="size-4 sm:size-5" />
-          @dogovorvodopolzovania
+          {contacts.social.telegram.handle}
         </a>
       </div>
     </div>

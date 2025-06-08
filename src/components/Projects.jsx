@@ -114,7 +114,7 @@ export default function Projects() {
 
   return (
     <>
-      <Carousel opts={{ loop: true }} plugins={[AutoScroll({ delay: 0, stopOnMouseEnter: true, stopOnInteraction: false })]} className="w-full">
+      <Carousel opts={{ loop: true }} plugins={[AutoScroll({ delay: 0, stopOnMouseEnter: true, stopOnInteraction: false })]} className="w-full border-r-2 border-l-2 border-primary relative after:absolute after:right-0 after:top-0 after:bg-gradient-to-l after:h-full after:w-1/2 after:from-primary/20 after:to-transparent after:z-10 before:absolute before:left-0 before:top-0 before:bg-gradient-to-r before:h-full before:w-1/2 before:from-primary/20 before:to-transparent before:z-10 before:pointer-events-none after:pointer-events-none">
         <CarouselContent className="-ml-12 flex">
           {projects.map((project, index) => (
             <CarouselItem className="md:basis-1/2 xl:basis-1/3 pl-12" key={index}>

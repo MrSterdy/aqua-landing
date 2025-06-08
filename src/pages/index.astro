@@ -1,6 +1,7 @@
 ---
 import HeroBackgroundImage from '@/assets/images/stroitelstvo-na-vode.webp'
-import CalculatePrice from '@/components/CalculatePrice'
+import AboutUsSection from '@/components/AboutUsSection.astro'
+import CalculatePriceSection from '@/components/CalculatePriceSection.jsx'
 import FAQSection from '@/components/FAQSection.astro'
 import Footer from '@/components/Footer.astro'
 import Header from '@/components/Header.astro'
@@ -54,9 +55,10 @@ if (typeof localStorage !== 'undefined') {
         <Image src={HeroBackgroundImage} alt="Строительство на воде" class="-z-10 inset-0 absolute w-full h-full object-cover brightness-50" />
       </div>
       <ServicesSection />
-      <ProjectsSection />
       <HowWeWorkSection />
-      <CalculatePrice client:load />
+      <AboutUsSection />
+      <ProjectsSection />
+      <CalculatePriceSection client:load />
       <FAQSection />
       <Footer />
     </main>

@@ -1,0 +1,76 @@
+---
+import OwnerImage from '@/assets/images/owner.jpg'
+import { contacts } from '@/lib/contacts'
+import { Image } from 'astro:assets'
+import { FaVk, FaWhatsapp } from 'react-icons/fa'
+import { LiaTelegram } from 'react-icons/lia'
+import { LuMail, LuMapPin } from 'react-icons/lu'
+
+---
+
+<section class="px-6 border-border border-b-1 border-dashed overflow-hidden" id="about-us">
+  <div class="max-w-[1400px] mx-auto flex flex-col gap-18 py-12">
+    <div class="flex flex-col lg:flex-row gap-12 items-center">
+      <Image src={OwnerImage} alt="Салиев Батыр" class="size-[250px] object-cover flex-shrink-0 rounded-full [object-position:0_-10px]" />
+      <div class="flex flex-col gap-4 flex-grow">
+        <h2 class="text-center lg:text-left text-2xl sm:text-3xl uppercase tracking-widest text-transparent bg-clip-text bg-gradient-to-t from-primary to-sky-300">
+          О нас
+        </h2>
+        <p class="text-center lg:text-left text-balance whitespace-pre-wrap text-base md:text-lg">{contacts.company.name} обладает многолетним опытом работы в сфере водопользования по всей России. Мы берем на себя все бюрократические вопросы и помогаем в подготовке и получении необходимых разрешительных документов.
+
+Наша команда гарантирует профессиональный подход, соблюдение сроков и учет всех ваших требований. Специалисты компании сопроводят вас на каждом этапе сотрудничества, обеспечивая прозрачность и надежность.
+        </p>
+        <div class="flex gap-4 items-center justify-center lg:justify-between flex-wrap pt-4 text-sm sm:text-base">
+          <div class="flex items-center justify-center lg:justify-start flex-wrap gap-4 sm:gap-6">
+            <a href={contacts.address.mapUrl} class="inline-flex items-center gap-2 transition-colors hover:text-primary underline" target="_blank">
+              <LuMapPin className="size-4 sm:size-5" />
+              {contacts.address.full}
+            </a>
+            <a href={contacts.social.vk.url} target="_blank" class="inline-flex items-center gap-2 transition-colors hover:text-primary underline">
+              <FaVk className="size-4 sm:size-5 text-blue-500" />
+              {contacts.social.vk.handle}
+            </a>
+            <a href={contacts.phone.whatsappUrl} target="_blank" class="inline-flex items-center gap-2 transition-colors hover:text-primary underline">
+              <FaWhatsapp className="size-4 sm:size-5 text-green-500" />
+              {contacts.phone.number}
+            </a>
+            <a href={contacts.social.telegram.url} target="_blank" class="inline-flex items-center gap-2 transition-colors hover:text-primary underline">
+              <LiaTelegram className="size-4 sm:size-5 text-sky-500" />
+              {contacts.social.telegram.handle}
+            </a>
+            <a href={contacts.email.url} target="_blank" class="inline-flex items-center gap-2 transition-colors hover:text-primary underline">
+              <LuMail className="size-4 sm:size-5 text-red-500" />
+              {contacts.email.address}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="grid sm:grid-cols-3 grid-cols-1 gap-12">
+      <div class="flex flex-col gap-4 text-center">
+        <h3 class="text-5xl sm:text-6xl uppercase tracking-widest text-transparent bg-clip-text bg-gradient-to-t from-primary to-sky-300 font-extrabold">
+          {contacts.stats.projectsPerYear}
+        </h3>
+        <p class="text-balance text-base md:text-lg uppercase tracking-widest">
+          {contacts.stats.projectsPerYearText}
+        </p>
+      </div>
+      <div class="flex flex-col gap-4 text-center">
+        <h3 class="text-5xl sm:text-6xl uppercase tracking-widest text-transparent bg-clip-text bg-gradient-to-t from-primary to-sky-300 font-extrabold">
+          {contacts.stats.agreements}
+        </h3>
+        <p class="text-balance text-base md:text-lg uppercase tracking-widest">
+          {contacts.stats.agreementsText}
+        </p>
+      </div>
+      <div class="flex flex-col gap-4 text-center">
+        <h3 class="text-5xl sm:text-6xl uppercase tracking-widest text-transparent bg-clip-text bg-gradient-to-t from-primary to-sky-300 font-extrabold">
+          {contacts.stats.companies}
+        </h3>
+        <p class="text-balance text-base uppercase md:text-lg tracking-widest">
+          {contacts.stats.companiesText}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,6 +1,6 @@
 ---
 import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
+import ButtonLink from '@/components/ui/button-link.astro'
 ---
 
 <article class="w-full px-6">
@@ -16,6 +16,8 @@ import { Button } from '@/components/ui/button'
     <p class="text-xl md:text-2xl font-medium text-white/85 text-center text-balance">
       Подготовка и согласование комплекта документов для приобретения права пользования водным объектом. Работаем во всех регионах России.
     </p>
-    <Button className="text-xl h-13 px-8 py-6">Узнать подробнее</Button>
+    <ButtonLink href="#about-us" class="text-xl h-13 px-8 py-6">
+      Узнать подробнее
+    </ButtonLink>
   </section>
 </article>

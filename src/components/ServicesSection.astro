@@ -1,5 +1,5 @@
 ---
-import { Button } from '@/components/ui/button'
+import { contacts } from '@/lib/contacts'
 import {
   LuBuilding2,
   LuFileText,
@@ -8,6 +8,7 @@ import {
   LuListChecks,
   LuScale,
 } from 'react-icons/lu'
+import ButtonLink from './ui/button-link.astro'
 
 const services = [
   {
@@ -81,7 +82,7 @@ const services = [
 ]
 ---
 
-<section class="px-6 bg-radial-[at_50%_0%] to-75% from-primary/20 border-border border-b-1 border-dashed">
+<section class="px-6 bg-radial-[at_50%_0%] to-75% from-primary/20 border-border border-b-1 border-dashed" id="services">
   <div class="max-w-[1400px] mx-auto flex flex-col gap-8 sm:gap-10 py-12">
     <div class="flex flex-col gap-4">
       <div class="flex items-center justify-center w-full gap-4">
@@ -120,6 +121,8 @@ const services = [
       })}
     </ul>
 
-    <Button variant="outline" className="text-xl h-13 px-8 py-6 self-center">Узнать подробнее</Button>
+    <ButtonLink href={contacts.phone.whatsappUrl} target="_blank" variant="outline" class="text-xl h-13 px-8 py-6 self-center">
+      Узнать подробнее
+    </ButtonLink>
   </div>
 </section>
