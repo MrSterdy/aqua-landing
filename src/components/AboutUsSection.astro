@@ -2,9 +2,6 @@
 import OwnerImage from '@/assets/images/owner.jpg'
 import { contacts } from '@/lib/contacts'
 import { Image } from 'astro:assets'
-import { FaVk, FaWhatsapp } from 'react-icons/fa'
-import { LiaTelegram } from 'react-icons/lia'
-import { LuMail, LuMapPin } from 'react-icons/lu'
 
 ---
 
@@ -20,30 +17,6 @@ import { LuMail, LuMapPin } from 'react-icons/lu'
 
 Наша команда гарантирует профессиональный подход, соблюдение сроков и учет всех ваших требований. Специалисты компании сопроводят вас на каждом этапе сотрудничества, обеспечивая прозрачность и надежность.
         </p>
-        <div class="flex gap-4 items-center justify-center lg:justify-between flex-wrap pt-4 text-sm sm:text-base">
-          <div class="flex items-center justify-center lg:justify-start flex-wrap gap-4 sm:gap-6">
-            <a href={contacts.address.mapUrl} class="inline-flex items-center gap-2 transition-colors hover:text-primary underline" target="_blank">
-              <LuMapPin className="size-4 sm:size-5" />
-              {contacts.address.full}
-            </a>
-            <a href={contacts.social.vk.url} target="_blank" class="inline-flex items-center gap-2 transition-colors hover:text-primary underline">
-              <FaVk className="size-4 sm:size-5 text-blue-500" />
-              {contacts.social.vk.handle}
-            </a>
-            <a href={contacts.phone.whatsappUrl} target="_blank" class="inline-flex items-center gap-2 transition-colors hover:text-primary underline">
-              <FaWhatsapp className="size-4 sm:size-5 text-green-500" />
-              {contacts.phone.number}
-            </a>
-            <a href={contacts.social.telegram.url} target="_blank" class="inline-flex items-center gap-2 transition-colors hover:text-primary underline">
-              <LiaTelegram className="size-4 sm:size-5 text-sky-500" />
-              {contacts.social.telegram.handle}
-            </a>
-            <a href={contacts.email.url} target="_blank" class="inline-flex items-center gap-2 transition-colors hover:text-primary underline">
-              <LuMail className="size-4 sm:size-5 text-red-500" />
-              {contacts.email.address}
-            </a>
-          </div>
-        </div>
       </div>
     </div>
     <div class="grid sm:grid-cols-3 grid-cols-1 gap-12">
