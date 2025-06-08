@@ -117,6 +117,17 @@ export default function CalculatePrice() {
                       <Input type="email" placeholder="ivanov@example.ru" />
                     </Label>
                     <Button type="submit">Отправить</Button>
+                    <span className="text-sm text-muted-foreground">
+                      Нажимая на кнопку, вы принимаете
+                      {' '}
+                      <a className="text-primary" target="_blank" href="/docs/polozhenie">Положение</a>
+                      {' '}
+                      и
+                      {' '}
+                      <a className="text-primary" target="_blank" href="/docs/soglasie">Согласие</a>
+                      {' '}
+                      на обработку персональных данных
+                    </span>
                   </form>
                 </DialogContent>
               </Dialog>
