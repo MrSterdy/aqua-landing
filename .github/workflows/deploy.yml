@@ -20,4 +20,4 @@ jobs:
             git pull origin main
             npm ci
             npm run build
-            pm2 reload ecosystem.config.js --env production
+            pm2 reload ecosystem.config.cjs --env production
