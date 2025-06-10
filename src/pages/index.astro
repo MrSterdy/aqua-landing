@@ -2,7 +2,7 @@
 import HeroBackgroundImage from '@/assets/images/stroitelstvo-na-vode.webp'
 import AboutUsSection from '@/components/AboutUsSection.astro'
 import CalculatePriceSection from '@/components/CalculatePriceSection.jsx'
-import FAQSection from '@/components/FAQSection.astro'
+import FAQSection from '@/components/FAQSection.jsx'
 import Footer from '@/components/Footer.astro'
 import Header from '@/components/Header.astro'
 import HeroSection from '@/components/HeroSection.astro'
@@ -13,10 +13,9 @@ import { contacts } from '@/lib/contacts'
 import { Image } from 'astro:assets'
 import '../styles/global.css'
 
-// SEO данные
 const siteTitle = `${contacts.company.shortName} - Договоры водопользования по всей России`
 const siteDescription = 'Профессиональное оформление договоров водопользования, получение разрешений на строительство ГТС, аренда акваторий. Работаем во всех регионах России. 217+ проектов в год.'
-const siteUrl = 'https://aquaphobia.ru' // Замените на ваш домен
+const siteUrl = 'https://aquaphobia.ru'
 ---
 
 <script is:inline>
@@ -52,7 +51,6 @@ if (typeof localStorage !== 'undefined') {
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
 
-    <!-- Основные SEO метатеги -->
     <title>{siteTitle}</title>
     <meta name="description" content={siteDescription} />
     <meta name="keywords" content="договор водопользования, аренда акватории, строительство на воде, водопользование, ГТС, берегоукрепление, рыбоводство, водный объект, Казань, Россия" />
@@ -60,10 +58,8 @@ if (typeof localStorage !== 'undefined') {
     <meta name="robots" content="index, follow" />
     <meta name="language" content="ru" />
 
-    <!-- Canonical URL -->
     <link rel="canonical" href={siteUrl} />
 
-    <!-- Open Graph метатеги -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content={siteTitle} />
     <meta property="og:description" content={siteDescription} />
@@ -72,13 +68,11 @@ if (typeof localStorage !== 'undefined') {
     <meta property="og:site_name" content={contacts.company.shortName} />
     <meta property="og:locale" content="ru_RU" />
 
-    <!-- Twitter Card метатеги -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={siteTitle} />
     <meta name="twitter:description" content={siteDescription} />
     <meta name="twitter:image:alt" content="Договор Водопользования - строительство на воде" />
 
-    <!-- Дополнительные метатеги -->
     <meta name="geo.region" content="RU-TA" />
     <meta name="geo.placename" content="Казань" />
     <meta name="geo.position" content="55.8304;49.0661" />
@@ -88,7 +82,6 @@ if (typeof localStorage !== 'undefined') {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
 
-        <!-- JSON-LD структурированные данные -->
     <script
       type="application/ld+json"
       set:html={JSON.stringify({
@@ -149,7 +142,7 @@ if (typeof localStorage !== 'undefined') {
       <AboutUsSection />
       <ProjectsSection />
       <CalculatePriceSection client:load />
-      <FAQSection />
+      <FAQSection client:load />
       <Footer />
     </main>
   </body>

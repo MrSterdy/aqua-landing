@@ -10,6 +10,14 @@ export default function CalculatePrice() {
   const [rectangleWidth, setRectangleWidth] = useState(1)
   const [term, setTerm] = useState(1)
 
+  const [formData, setFormData] = useState({
+    name: '',
+    phone: '',
+    email: '',
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState(null) // 'success' | 'error' | null
+
   const handleKeyDown = (e) => {
     const invalidKeys = ['-', '+', 'e', 'E', '.', ',']
     if (invalidKeys.includes(e.key)) {
@@ -36,6 +44,61 @@ export default function CalculatePrice() {
 
     if (value === '' || (numValue >= 1 && numValue <= 20)) {
       setTerm(value)
+    }
+  }
+
+  const handleFormDataChange = (field, value) => {
+    setFormData(prev => ({
+      ...prev,
+      [field]: value,
+    }))
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setSubmitStatus(null)
+
+    try {
+      const calculationData = {
+        length: rectangleLength,
+        width: rectangleWidth,
+        term,
+        area: rectangleLength * rectangleWidth,
+      }
+
+      const response = await fetch('/api/telegram/send-application', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          calculation: calculationData,
+        }),
+      })
+
+      if (response.ok) {
+        setSubmitStatus('success')
+        setFormData({
+          name: '',
+          phone: '',
+          email: '',
+        })
+        setTimeout(() => {
+          setSubmitStatus(null)
+        }, 1500)
+      }
+      else {
+        setSubmitStatus('error')
+      }
+    }
+    catch (error) {
+      console.error('Ошибка отправки:', error)
+      setSubmitStatus('error')
+    }
+    finally {
+      setIsSubmitting(false)
     }
   }
 
@@ -103,20 +166,53 @@ export default function CalculatePrice() {
                     <DialogTitle>Оставьте свои контактные данные</DialogTitle>
                     <DialogDescription>Укажите ваши контактные данные, чтобы мы могли связаться с вами.</DialogDescription>
                   </DialogHeader>
-                  <form className="flex flex-col gap-4">
+                  <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                     <Label className="flex flex-col gap-2 items-start">
                       <span>Имя</span>
-                      <Input type="text" placeholder="Иванов Иван" />
+                      <Input
+                        type="text"
+                        placeholder="Иванов Иван"
+                        value={formData.name}
+                        onChange={e => handleFormDataChange('name', e.target.value)}
+                        required
+                      />
                     </Label>
                     <Label className="flex flex-col gap-2 items-start">
                       <span>Телефон</span>
-                      <Input type="tel" placeholder="+7 (999) 999-99-99" />
+                      <Input
+                        type="tel"
+                        placeholder="+7 (999) 999-99-99"
+                        value={formData.phone}
+                        onChange={e => handleFormDataChange('phone', e.target.value)}
+                        required
+                      />
                     </Label>
                     <Label className="flex flex-col gap-2 items-start">
                       <span>Email</span>
-                      <Input type="email" placeholder="ivanov@example.ru" />
+                      <Input
+                        type="email"
+                        placeholder="ivanov@example.ru"
+                        value={formData.email}
+                        onChange={e => handleFormDataChange('email', e.target.value)}
+                        required
+                      />
                     </Label>
-                    <Button type="submit">Отправить</Button>
+
+                    {submitStatus === 'success' && (
+                      <div className="text-green-600 text-sm">
+                        Заявка успешно отправлена!
+                      </div>
+                    )}
+
+                    {submitStatus === 'error' && (
+                      <div className="text-red-600 text-sm">
+                        Ошибка при отправке заявки. Попробуйте еще раз.
+                      </div>
+                    )}
+
+                    <Button type="submit" disabled={isSubmitting}>
+                      {isSubmitting ? 'Отправляем...' : 'Отправить'}
+                    </Button>
                     <span className="text-sm text-muted-foreground">
                       Нажимая на кнопку, вы принимаете
                       {' '}
