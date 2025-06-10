@@ -9,8 +9,14 @@ import HeroSection from '@/components/HeroSection.astro'
 import HowWeWorkSection from '@/components/HowWeWorkSection.astro'
 import ProjectsSection from '@/components/ProjectsSection.astro'
 import ServicesSection from '@/components/ServicesSection.astro'
+import { contacts } from '@/lib/contacts'
 import { Image } from 'astro:assets'
 import '../styles/global.css'
+
+// SEO данные
+const siteTitle = `${contacts.company.shortName} - Договоры водопользования по всей России`
+const siteDescription = 'Профессиональное оформление договоров водопользования, получение разрешений на строительство ГТС, аренда акваторий. Работаем во всех регионах России. 217+ проектов в год.'
+const siteUrl = 'https://aquaphobia.ru' // Замените на ваш домен
 ---
 
 <script is:inline>
@@ -36,23 +42,107 @@ if (typeof localStorage !== 'undefined') {
   <head>
     <meta charset="utf-8" />
 
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content={contacts.company.shortName} />
+    <link rel="manifest" href="/site.webmanifest" />
 
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
 
-    <title>Astro</title>
+    <!-- Основные SEO метатеги -->
+    <title>{siteTitle}</title>
+    <meta name="description" content={siteDescription} />
+    <meta name="keywords" content="договор водопользования, аренда акватории, строительство на воде, водопользование, ГТС, берегоукрепление, рыбоводство, водный объект, Казань, Россия" />
+    <meta name="author" content={contacts.company.name} />
+    <meta name="robots" content="index, follow" />
+    <meta name="language" content="ru" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href={siteUrl} />
+
+    <!-- Open Graph метатеги -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={siteTitle} />
+    <meta property="og:description" content={siteDescription} />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:image:alt" content="Договор Водопользования - строительство на воде" />
+    <meta property="og:site_name" content={contacts.company.shortName} />
+    <meta property="og:locale" content="ru_RU" />
+
+    <!-- Twitter Card метатеги -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={siteTitle} />
+    <meta name="twitter:description" content={siteDescription} />
+    <meta name="twitter:image:alt" content="Договор Водопользования - строительство на воде" />
+
+    <!-- Дополнительные метатеги -->
+    <meta name="geo.region" content="RU-TA" />
+    <meta name="geo.placename" content="Казань" />
+    <meta name="geo.position" content="55.8304;49.0661" />
+    <meta name="ICBM" content="55.8304, 49.0661" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+
+        <!-- JSON-LD структурированные данные -->
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      'name': contacts.company.name,
+      'alternateName': contacts.company.shortName,
+      'url': siteUrl,
+      'logo': `${siteUrl}/logo.png`,
+      'description': siteDescription,
+      'address': {
+        '@type': 'PostalAddress',
+        'streetAddress': 'ул. Петербургская, д. 52',
+        'addressLocality': 'Казань',
+        'addressCountry': 'RU',
+      },
+      'contactPoint': {
+        '@type': 'ContactPoint',
+        'telephone': contacts.phone.number,
+        'contactType': 'customer service',
+        'availableLanguage': 'Russian',
+        'email': contacts.email.address,
+      },
+      'sameAs': [
+        contacts.social.vk.url,
+        contacts.social.telegram.url,
+      ],
+      'areaServed': {
+        '@type': 'Country',
+        'name': 'Россия',
+      },
+      'serviceType': [
+        'Договоры водопользования',
+        'Аренда акваторий',
+        'Строительство на воде',
+        'Берегоукрепление',
+        'Рыбоводство',
+        'Юридические услуги',
+      ],
+    })}
+    />
   </head>
   <body class="flex flex-col min-h-screen gap-8">
     <main class="flex flex-col">
       <div class="relative text-white flex flex-col gap-8 md:gap-24 h-screen">
         <Header />
         <HeroSection />
-        <Image src={HeroBackgroundImage} alt="Строительство на воде" class="-z-10 inset-0 absolute w-full h-full object-cover brightness-50" />
+        <Image
+          src={HeroBackgroundImage}
+          alt="Строительство на воде - договоры водопользования и оформление акваторий в России"
+          class="-z-10 inset-0 absolute w-full h-full object-cover brightness-50"
+          loading="eager"
+          fetchpriority="high"
+        />
       </div>
       <ServicesSection />
       <HowWeWorkSection />

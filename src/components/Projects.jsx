@@ -88,6 +88,7 @@ export default function Projects() {
             dynamicEl: project.images.map(img => ({
               src: img,
               thumb: img,
+              downloadUrl: img,
             })),
             speed: 500,
             download: false,
@@ -127,7 +128,9 @@ export default function Projects() {
                   <img
                     src={project.image}
                     className="rounded-md w-full h-[200px] object-cover"
-                    alt={`Проект ${index + 1}`}
+                    alt={`Проект ${index + 1}: ${project.type} в ${project.place}`}
+                    loading="lazy"
+                    decoding="async"
                   />
                 </button>
                 <div className="flex flex-col gap-2">
