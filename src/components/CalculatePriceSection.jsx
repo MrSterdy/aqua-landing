@@ -188,13 +188,12 @@ export default function CalculatePrice() {
                       />
                     </Label>
                     <Label className="flex flex-col gap-2 items-start">
-                      <span>Email</span>
+                      <span>Email (необязательно)</span>
                       <Input
                         type="email"
                         placeholder="ivanov@example.ru"
                         value={formData.email}
                         onChange={e => handleFormDataChange('email', e.target.value)}
-                        required
                       />
                     </Label>
 

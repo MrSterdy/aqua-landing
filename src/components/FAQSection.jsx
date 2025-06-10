@@ -97,12 +97,11 @@ export default function FAQSection() {
             </label>
             <label>
               <Input
-                placeholder="Электронная почта"
+                placeholder="Электронная почта (необязательно)"
                 type="email"
                 className="placeholder:text-white text-white focus-visible:ring-0 focus-visible:border-input h-10"
                 value={consultationData.email}
                 onChange={e => handleConsultationDataChange('email', e.target.value)}
-                required
               />
             </label>
             <Button

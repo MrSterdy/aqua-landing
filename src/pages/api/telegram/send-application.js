@@ -4,7 +4,7 @@ export async function POST({ request }) {
   try {
     const data = await request.json()
 
-    if (!data.name || !data.phone || !data.email || !data.calculation) {
+    if (!data.name || !data.phone || !data.calculation) {
       return new Response(JSON.stringify({ error: 'Недостаточно данных' }), {
         status: 400,
         headers: { 'Content-Type': 'application/json' },
@@ -26,8 +26,7 @@ export async function POST({ request }) {
 
 👤 *Контактные данные:*
 • Имя: ${data.name}
-• Телефон: ${data.phone}
-• Email: ${data.email}
+• Телефон: ${data.phone}${data.email ? `\n• Email: ${data.email}` : ''}
 
 📐 *Параметры расчета:*
 • Длина: ${data.calculation.length} м
