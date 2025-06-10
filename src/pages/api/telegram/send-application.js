@@ -1,5 +1,3 @@
-import process from 'node:process'
-
 export async function POST({ request }) {
   try {
     const data = await request.json()
@@ -11,8 +9,8 @@ export async function POST({ request }) {
       })
     }
 
-    const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN
-    const TELEGRAM_CHAT_ID = process.env.TELEGRAM_CHAT_ID
+    const TELEGRAM_BOT_TOKEN = import.meta.env.TELEGRAM_BOT_TOKEN
+    const TELEGRAM_CHAT_ID = import.meta.env.TELEGRAM_CHAT_ID
 
     if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) {
       console.error('Не настроены переменные окружения для Telegram')
