@@ -13,9 +13,9 @@ import { contacts } from '@/lib/contacts'
 import { Image } from 'astro:assets'
 import '../styles/global.css'
 
-const siteTitle = `${contacts.company.shortName} - Договоры водопользования по всей России`
+const siteTitle = 'Договор Водопользования. Оформление акватории по всей России'
 const siteDescription = 'Профессиональное оформление договоров водопользования, получение разрешений на строительство ГТС, аренда акваторий. Работаем во всех регионах России. 217+ проектов в год.'
-const siteUrl = 'https://aquaphobia.ru'
+const siteUrl = 'https://d-vodopolzovania.ru'
 ---
 
 <script is:inline>
@@ -126,7 +126,7 @@ if (typeof localStorage !== 'undefined') {
   </head>
   <body class="flex flex-col min-h-screen gap-8">
     <main class="flex flex-col">
-      <div class="relative text-white flex flex-col gap-8 md:gap-24 h-screen">
+      <div class="relative text-white flex flex-col gap-8 md:gap-24 min-h-screen">
         <Header />
         <HeroSection />
         <Image
