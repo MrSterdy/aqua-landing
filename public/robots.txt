@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: 
 
-Sitemap: https://aquaphobia.ru/sitemap.xml
+Sitemap: https://d-vodopolzovania.ru/sitemap.xml
