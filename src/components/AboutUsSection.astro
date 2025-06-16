@@ -5,44 +5,68 @@ import { Image } from 'astro:assets'
 
 ---
 
-<section class="px-6 border-border border-b-1 border-dashed overflow-hidden" id="about-us">
-  <div class="max-w-[1400px] mx-auto flex flex-col gap-18 py-12">
-    <div class="flex flex-col lg:flex-row gap-12 items-center">
-      <Image src={OwnerImage} alt="Салиев Батыр" class="size-[250px] object-cover flex-shrink-0 rounded-full [object-position:0_-10px]" loading="lazy" />
-      <div class="flex flex-col gap-4 flex-grow">
-        <h2 class="text-center lg:text-left text-2xl sm:text-3xl uppercase tracking-widest text-transparent bg-clip-text bg-gradient-to-t from-primary to-sky-300">
-          О нас
-        </h2>
-        <p class="text-center lg:text-left text-balance whitespace-pre-wrap text-base md:text-lg">{contacts.company.name} обладает многолетним опытом работы в сфере водопользования по всей России. Мы берем на себя все бюрократические вопросы и помогаем в подготовке и получении необходимых разрешительных документов.
+<section class="px-6 border-border border-b-1 border-dashed" id="about-us">
+  <div class="flex flex-col xl:flex-row gap-18 justify-between py-12 max-w-[1400px] mx-auto">
+    <div class="flex flex-col gap-18 py-12">
+      <div class="flex flex-col lg:flex-row gap-12">
+        <div class="flex flex-col items-center gap-4 flex-shrink-0">
+          <Image src={OwnerImage} alt="Салиев Батыр" class="size-[250px] object-cover flex-shrink-0 rounded-full [object-position:0_-10px]" loading="lazy" />
+          <div class="flex flex-col">
+            <p class="text-center text-balance font-medium">Салиев Батыр Шахурдинович</p>
+            <p class="text-center text-muted-foreground text-balance">Руководитель</p>
+          </div>
+        </div>
+        <div class="flex flex-col gap-4 flex-grow">
+          <h2 class="text-center lg:text-left text-2xl sm:text-3xl uppercase tracking-widest text-transparent bg-clip-text bg-gradient-to-t from-primary to-sky-300">
+            О нас
+          </h2>
+          <p class="text-center lg:text-left text-balance whitespace-pre-wrap text-base md:text-lg">{contacts.company.name} обладает многолетним опытом работы в сфере водопользования по всей России. Мы берем на себя все бюрократические вопросы и помогаем в подготовке и получении необходимых разрешительных документов.
 
 Наша команда гарантирует профессиональный подход, соблюдение сроков и учет всех ваших требований. Специалисты компании сопроводят вас на каждом этапе сотрудничества, обеспечивая прозрачность и надежность.
-        </p>
+          </p>
+        </div>
+      </div>
+      <div class="grid sm:grid-cols-3 grid-cols-1 gap-12">
+        <div class="flex flex-col gap-4 text-center">
+          <h3 class="text-5xl sm:text-6xl uppercase tracking-widest text-transparent bg-clip-text bg-gradient-to-t from-primary to-sky-300 font-extrabold">
+            {contacts.stats.projectsPerYear}
+          </h3>
+          <p class="text-balance text-base md:text-lg uppercase tracking-widest">
+            {contacts.stats.projectsPerYearText}
+          </p>
+        </div>
+        <div class="flex flex-col gap-4 text-center">
+          <h3 class="text-5xl sm:text-6xl uppercase tracking-widest text-transparent bg-clip-text bg-gradient-to-t from-primary to-sky-300 font-extrabold">
+            {contacts.stats.agreements}
+          </h3>
+          <p class="text-balance text-base md:text-lg uppercase tracking-widest">
+            {contacts.stats.agreementsText}
+          </p>
+        </div>
+        <div class="flex flex-col gap-4 text-center">
+          <h3 class="text-5xl sm:text-6xl uppercase tracking-widest text-transparent bg-clip-text bg-gradient-to-t from-primary to-sky-300 font-extrabold">
+            {contacts.stats.companies}
+          </h3>
+          <p class="text-balance text-base uppercase md:text-lg tracking-widest">
+            {contacts.stats.companiesText}
+          </p>
+        </div>
       </div>
     </div>
-    <div class="grid sm:grid-cols-3 grid-cols-1 gap-12">
-      <div class="flex flex-col gap-4 text-center">
-        <h3 class="text-5xl sm:text-6xl uppercase tracking-widest text-transparent bg-clip-text bg-gradient-to-t from-primary to-sky-300 font-extrabold">
-          {contacts.stats.projectsPerYear}
-        </h3>
-        <p class="text-balance text-base md:text-lg uppercase tracking-widest">
-          {contacts.stats.projectsPerYearText}
-        </p>
-      </div>
-      <div class="flex flex-col gap-4 text-center">
-        <h3 class="text-5xl sm:text-6xl uppercase tracking-widest text-transparent bg-clip-text bg-gradient-to-t from-primary to-sky-300 font-extrabold">
-          {contacts.stats.agreements}
-        </h3>
-        <p class="text-balance text-base md:text-lg uppercase tracking-widest">
-          {contacts.stats.agreementsText}
-        </p>
-      </div>
-      <div class="flex flex-col gap-4 text-center">
-        <h3 class="text-5xl sm:text-6xl uppercase tracking-widest text-transparent bg-clip-text bg-gradient-to-t from-primary to-sky-300 font-extrabold">
-          {contacts.stats.companies}
-        </h3>
-        <p class="text-balance text-base uppercase md:text-lg tracking-widest">
-          {contacts.stats.companiesText}
-        </p>
+
+    <div class="relative w-full grid place-items-center before:pointer-events-none before:absolute before:size-64 before:rounded-full before:blur-3xl before:left-0 before:-top-32 before:opacity-30 before:bg-primary after:absolute after:pointer-events-none after:size-64 after:rounded-full after:blur-3xl after:right-0 after:bottom-0 after:opacity-30 after:bg-primary">
+      <div class="w-[280px] lg:w-[320px] aspect-[9/16] overflow-hidden p-1 bg-gradient-to-br from-primary to-blue-800 rounded-2xl">
+        <video
+          class="w-full h-full object-cover rounded-xl"
+          controls
+          preload="metadata"
+          playsinline
+          poster="/images/video-poster.png"
+        >
+          <source src="/videos/introduction.mp4" type="video/mp4" />
+          <source src="/videos/introduction.webm" type="video/webm" />
+          Ваш браузер не поддерживает видео.
+        </video>
       </div>
     </div>
   </div>
