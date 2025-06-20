@@ -23,8 +23,8 @@ export const contacts = {
       url: 'https://vk.com/vodopolzovania',
     },
     telegram: {
-      handle: '@dogovorvodopolzovania',
-      url: 'https://t.me/dogovorvodopolzovania',
+      handle: '@vodopolzovania',
+      url: 'https://t.me/vodopolzovania',
     },
   },
   stats: {
